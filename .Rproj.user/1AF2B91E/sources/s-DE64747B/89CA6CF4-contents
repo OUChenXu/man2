@@ -16,23 +16,23 @@
 |         |         |                                                                                        |             | 
 | 7       | 2/4/19  | Prediction and Conditional Distribution                                                |             | 
 |         |         |                                                                                        |             | 
-| 8       | 2/6/19  | Conditional Distribution and Tree Models (Optional)                                    |             | 
+| 8       | 2/6/19  | Conditional Distribution, Bayes Rule, and Bayesian Estimation                          |             | 
 |         |         |                                                                                        |             | 
-| 9       | 2/11/19 | Conditional Distribution and Tree Models (Optional)                                    |             | 
+| 9       | 2/11/19 | Conditional Distribution, Bayes Rule, and Bayesian Estimation                          |             | 
 |         |         |                                                                                        |             | 
-| 10      | 2/13/19 | Conditional Distribution, Bayes Rule, and Bayesian Estimation                          |             | 
+| 10      | 2/13/19 | Conditional Expectation: Basics and Linear Regression as Computational Tools           |             | 
 |         |         |                                                                                        |             | 
-| 11      | 2/18/19 | Conditional Distribution, Bayes Rule, and Bayesian Estimation                          |             | 
+| 11      | 2/18/19 | Conditional Expectation: Basics and Linear Regression as Computational Tools           |             | 
 |         |         |                                                                                        |             | 
 | 12      | 2/20/19 | Conditional Expectation: Basics and Linear Regression as Computational Tools           |             | 
 |         |         |                                                                                        |             | 
-| 13      | 2/25/19 | Conditional Expectation: Basics and Linear Regression as Computational Tools           |             | 
+| 13      | 2/25/19 | Approximation Tools: Nonparametric Estimation and Linear Regression                    |             | 
 |         |         |                                                                                        |             | 
-| 14      | 2/27/19 | Conditional Expectation: Basics and Linear Regression as Computational Tools           |             | 
+| 14      | 2/27/19 | Approximation Tools: Nonparametric Estimation and Linear Regression                    |             | 
 |         |         |                                                                                        |             | 
-| 15      | 3/4/19  | Approximation Tools: Nonparametric Estimation and Linear Regression                    |             | 
+| 15      | 3/4/19  | Conditional Distribution and Tree Models (Optional)                                    |             | 
 |         |         |                                                                                        |             | 
-| 16      | 3/6/19  | Approximation Tools: Nonparametric Estimation and Linear Regression                    |             | 
+| 16      | 3/6/19  | Conditional Distribution and Tree Models (Optional)                                    |             | 
 |         |         |                                                                                        |             | 
 | 17      | 3/11/19 | Linear Regression and Nonlinear Models                                                 |             | 
 |         |         |                                                                                        |             | 
