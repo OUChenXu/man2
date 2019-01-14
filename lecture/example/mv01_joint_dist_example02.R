@@ -22,3 +22,10 @@ mytable<-as.table(mytable)
 mytable
 
 chisq.test(mytable)
+
+# Alternative Tests: Fishers Exact Test
+
+fisher.test(mytable)
+
+# Cochran-Mantel-Haenszel Test of conditional independence (will be discussed later)
+# mantelhaen.test(mytable)
