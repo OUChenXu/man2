@@ -1,0 +1,4 @@
+library("malariaAtlas")
+
+
+data<-getVecOcc(continent = c("Europe"))

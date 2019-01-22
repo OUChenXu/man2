@@ -22,6 +22,8 @@ mytable<-xtabs(~ x+y, data=data)
 prop.table(mytable)
 
 
+
+
 # Visualization and Mosaic Plot (Equal Probability)
 
 library(vcd)
@@ -42,3 +44,7 @@ prop.table(mytable)
 
 library(vcd)
 mosaic(mytable, shade=TRUE, legend=TRUE)
+
+
+# Step 4. Calculate marginal distribution
+addmargins(prop.table(mytable))

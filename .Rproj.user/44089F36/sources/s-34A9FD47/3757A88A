@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1547952800409.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3757A88A",
+    "lastKnownWriteTime" : 25769803788,
+    "last_content_update" : 1547952800409,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "652E8C92",
+        "caption" : "europe",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=europe&cache_key=652E8C92",
+        "displayedObservations" : 2730,
+        "environment" : "",
+        "expression" : "europe",
+        "object" : "europe",
+        "preview" : 0,
+        "totalObservations" : 2730,
+        "variables" : 24
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

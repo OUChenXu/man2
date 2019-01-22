@@ -1,0 +1,23 @@
+# Example 2: Super Bowl and White Jerseys
+mytable <- matrix(c(33,19,19,33),ncol=2,byrow=TRUE)
+mytable<-as.table(mytable)
+mytable
+
+library(vcd)
+
+assocstats(mytable)
+
+chisq.test(mytable)
+
+cv.test = function(x,y) {
+  
+  
+  CV = sqrt(chisq.test(x, y, correct=FALSE)$statistic /
+              (length(x) * (min(length(unique(x)),length(unique(y))) - 1)))
+  print.noquote("Cramer's V / Phi:")
+  return(as.numeric(CV))
+}
+
+
+helpdata <- read.csv("http://www.math.smith.edu/r/data/help.csv")
+with(helpdata, cv.test(female, homeless)

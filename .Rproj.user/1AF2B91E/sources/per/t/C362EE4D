@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1547241402437.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4081711217",
+    "id" : "C362EE4D",
+    "lastKnownWriteTime" : 1547492056,
+    "last_content_update" : 1547492056492,
+    "path" : "~/Dropbox/02 teaching/econ5043/08github/lecture/example/mv01_joint_dist_example02.R",
+    "project_path" : "lecture/example/mv01_joint_dist_example02.R",
+    "properties" : {
+        "cursorPosition" : "1,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -8,7 +8,7 @@
 |         |         |                                                                                        |             | 
 | 3       | 1/21/19 | MLK Day (No Class)                                                                     |             | 
 |         |         |                                                                                        |             | 
-| 4       | 1/23/19 | Joint Distribution and Independence [details](summary/mv01_joint_dist.md)              | PS1; Quiz 1 | 
+| 4       | 1/23/19 | Joint Distribution and Independence [details](summary/mv01_joint_dist.md)              | [PS1](ps/ps1.pdf) and [Titanic Data](ps/titanic.csv) ; Quiz 1 | 
 |         |         |                                                                                        |             | 
 | 5       | 1/28/19 | Measures of Linear Relations and Their Applications                                    |             | 
 |         |         |                                                                                        |             | 
