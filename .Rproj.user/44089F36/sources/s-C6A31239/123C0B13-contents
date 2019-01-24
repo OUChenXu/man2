@@ -1,0 +1,752 @@
+---
+title: "Introduction to Probability Theory"
+author: "Le Wang"
+header-includes:
+  - \usepackage{tikz}
+date: "`r Sys.Date()`"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## What is Econometrics?
+
+**Frisch (1895-1973)**: one of the three cofounders of the Econometric Society; first editor of *Econometrica*; Nobel Laureate of 1969
+
+\bigskip
+
+A unification of the theoretical-quantitative and empirical-quantitative approach to economic problems''
+
+- NOT economic statistics
+- NOT general economic theory
+- NOT application of math to economics
+
+\bigskip
+
+''And it's the unification of all three that consitutes econometrics''.
+
+## What is the general approach approach to econometrics?
+
+**Trygve Haavelmo (1911-1999)**: Nobel Laureate 1989
+
+\bigskip
+
+In his *Econometrica* 1944, titled "The Probability Approach in Econometrics"
+
+\bigskip
+
+Quantitative economic models must necessarily be **probability models** (modern terminology: stochastic models)
+
+\bigskip
+
+It follows naturally that 
+
+- An appropriate way to quantify, estimate, and conduct inferences about the economy is through the powerful theory of **mathematical statistics**
+- The approprirate method for a quantitative economic analysis follows from the **probabilistic construction of the economic model**.
+
+## Probability Approach
+
+All economists embrace the probability approach but there has been some evolution in its implementation. 
+
+- **Structural Approach**: Under the assumptions that models are correctly identified (e.g., likelihood-based analysis)
+- **Quasi- or Semi-structural** Models are useful approximation or abstraction (e.g., quasi-likelihood estimation)
+- **Reduced-form** Most of the features are left unspecified (e.g., linear regression)
+
+Another complete different quantitative approach **Calibration**: 
+
+- Models are only approximations, but reject math stat (deeming classical theory as inappropriate)
+- Select parameters by matching models and data moments using non-standard ad-hoc methods.
+
+
+## Review of Probability Theory
+
+**Road Map**
+
+1. Brief History
+2. Basic Probability Theory
+
+    - Frequentist vs Bayesian View (Objective vs Subjective Probability)
+    - Basic Definitions and Axioms
+    - Basic Rules
+    - Random Variables    
+    - Probability Distribution Functions
+
+## A bit of History: 
+
+\bigskip
+
+**Question:** Could I have thought that?
+
+
+## A bit of History: Who?
+
+It is difficult to exactly pin down the moments when the idea of statistical model became part of science, but **Karl Pearson**, who changed his name Carl Pearson because of his admiration for Karl Marx while studying political science in Germany, first recognized the underlying nature of statistical models and offer something drastically different from the deterministic view of nienteenth-century science. 
+
+
+  ![A cool Dude](figures/Portrait_of_Karl_Pearson.jpg){width=20%}
+
+## A bit of History: 
+
+
+\textbf{Clockwork Universe} $\implies$ \textbf{Error View} $\implies$ \textbf{Statistics View}
+  
+  
+  
+## A bit of History: Background (Clockwork Universe)
+  
+  Science in the nineteenth century with a firm phiolsophical vision: **Clockwork Universe**:
+  
+  \bigskip   
+A small number of mathematical formuas (like Newton's laws of motion and Boyle's laws for gases) that could be used to describe reality and to predict future events. 
+
+\bigskip   
+All that was needed for such prediction was a complete set of these formulas and a group of associated measurements that were taken with sufficient precision. 
+
+## A bit of History: Problems 
+
+This philosophical view indeed became an essential part of popular culture because of its success e.g., Newton's laws in predicting the existence of another planet..
+
+\bigskip   
+
+- But attempts to discover the laws of other fields such as biology and sociology have failed. Even the laws that Newton and Laplace had used were proving to be only rough approximations. 
+
+## A bit of History: Example
+
+High school physics: experiments to determine the value of $g$ ($9.8 m/s^2$), the constant of acceleration. 
+
+\bigskip 
+
+You never get it right! Any unexpected changes in the experiment, such as room temperature and even a slight breeze from a passing butterfly can have an effect.
+
+## A bit of History: What do you do?
+
+One solution by Laplace: 
+\bigskip 
+
+1. keep the precise mathematical forumlae and 
+2. treat the deviations between the observed values and the predicted values as a small, unimportant errors.
+3. As early as 1820, Laplace describe an error function, which was a mathematical formulation of the probabilities associated with these small errors, and was the first prbability distribution that was ever derived!
+
+- What is it?
+- (sort of) Bell-shaped distribution (Normal Distribution)! 
+
+\bigskip 
+
+Uncertainty is not inherent in nature!
+
+## A bit of History: Issues with Laplace's solution
+
+Treating these deviations as errors, Laplace thought that with better equipments and more precise measurements, the errors would go away. 
+
+\bigskip 
+- But no! 
+  
+  \bigskip 
+- Instead, the inherent **randomness** of nature became more and more clear!
+  
+## A bit of History: Pearson's Idea (I)
+  
+  - Do not look at experimental results as carefully measured numbers in their own right
+- Instead, they are examples of a scatter of numbers, a *distribution* of numbers!
+  - Whatever we measure or observe is really part of a random scatter, whose probabilities are described by a mathematical function, the probability distribution function.
+- Pearson discovered a family of distribution functions called the **skew distributions**, which is identified by four numbers. He claimed that these functions can characterize any type of scatter! 
+  
+## A bit of History: Pearson's Idea (II)  
+  
+  Pearson's phiolosophy:
+
+\bigskip
+
+- Observable phenomena are only random reflections
+- What is real is **probability distribution**, the mathematical function that describes the randomness of what we could observe.
+
+## A bit of History
+
+\begin{center}
+\textbf{Randomness} $\neq$ \textbf{Complete Unpredictability}
+
+\end{center}
+
+## Basic Probability Theory
+
+**probability** as a measure of uncertainty or randomness. 
+
+1. Frequentist vs Bayesian View (Objective vs Subjective Probability)
+2. Basic Definitions and Axioms
+3. Basic Rules
+
+## Basic Probability Theory 
+
+Examples of probability statements:
+
+1. The probability of winning a game is $50$\%.
+2. The probability of Trump winning the US. presidential election is xx\%. 
+3. et....
+
+\bigskip
+
+**Question:** What exactly is "probability"?
+
+## Frequentist vs Bayesian View
+
+*Frequentist*: probability represents the *limit* of relative frequency, defined as the ratio between the number of times the event occurs and the number of trials (defined below), in **repeated trials** under **the same conditions**.
+
+\bigskip
+
+*Bayesian*: probability is a measure of one's **subjective belief** about the likelihood of an event occurring based on whatever information is available. 
+
+\bigskip
+
+Note that: all bolded words represent the sources of controversies for each view. 
+
+## Frequentist vs Bayesian View
+
+*Frequentist*: probability represents the *limit* of relative frequency, defined as the ratio between the number of times the event occurs and the number of trials (defined below), in **repeated trials** under **the same conditions**.
+
+1. The probability of winning a game is $50$\%. **Issue:** Every game is different, not the same conditions.
+
+\bigskip
+
+2. The probability of Trump winning the 2016 US. presidential election is xx\%. **Issue:** The 2016 election occurred only once. What do you mean by **repeated trials**?
+
+## Frequentist vs Bayesian View
+
+*Bayesian*: probability is a measure of one's **subjective belief** about the likelihood of an event occurring based on whatever information is available. 
+
+\bigskip
+
+**Issue** if scientists have identical sets of empirical evidence, they should arrive at the same conclusion rahther than reporting different probabilities of the same event! 
+
+\bigskip
+
+Under the Bayesian framework, probability simply becomes a tool to describe one's belief system. (Bayesian Response: everyone's subjective, we should explicitly recognize the role of such subjectivity.)
+
+## Frequentist vs Bayesian View
+
+Regardless of the controversy about its **interpretation**, probability was established as a mathematical theory by Andrey Kolmogorov. 
+
+\bigskip
+
+Both views adopt the mathematical theory and the disagreement is about **interpretation** and is NOT **mathematical**.
+
+
+## Basic Definitions and Axioms
+
+The definitions of probability requires the following concepts
+
+1. **experiment**: an action or a set of actions (or a process) that produce stochastic events of interest. 
+2. **outcome**: a particular result of an experiemnt
+3. **sample space**: a set of all possible outcomes of the experiment, typically denoted by $\Omega$
+4. **event**: a subset of the sample space
+
+\bigskip
+
+Loosely speaking, a **set** is a collection of distinct objects. 
+
+
+## Basic Definitions and Axioms (Example)
+
+|              |                                            | 
+|--------------|--------------------------------------------| 
+| Experiment   | Roll a Die                                 | 
+|              |                                            | 
+| Outcome      | e.g., 1                                    | 
+|              |                                            | 
+| Sample space | 1,2,3,4,5,6                                | 
+|              |                                            | 
+| Event        | A number greater than 4, including 5 and 6 | 
+|              | (a subset)                                 | 
+| Event        | A number has three letters,                | 
+|              | (one, two, six)                            | 
+
+## Sample Space and Events (Graphical Illustration)
+
+![](figures/prob_theory_01.png)
+
+
+---
+
+![](figures/prob_theory_02.png)
+
+
+## Basic Definitions and Axioms
+
+The **probability axioms** are giveny by the following three rules
+
+1. The probability of any event $A$ is non-negative 
+$$
+P(A) \geq 0
+$$
+
+2. The probability that one of the outcomes in the sample space occurs is $1$:
+$$
+P(\Omega) = 1
+$$
+3. (*Countable Additivity*) If events $A$ and $B$ are **mutually exclusive** or **pairwise disjoint**, then 
+$$
+P(\cup^\infty_{i=1} A_i) = \sum^\infty_{i=1} P(A_i)
+$$
+
+## Empty Sets
+
+It is useful to note that $\emptyset$ is a subset of the sample space, representing **impossible events**. It contains no elements and formally defined as follows
+$$
+\emptyset := \{x: x\neq x \}
+$$
+
+Also, disjoint events are those who do not overlap. Mathmetically, $A$ and $B$ are mutually exclusive or disjoint if
+$$
+A \cap B = \emptyset
+$$
+
+
+
+## Some Tricky things about Empty Sets
+
+Actually, empty set is a subset of any subsets, and two empty sets are disjoint
+$$
+\emptyset \subset A, \quad \emptyset \cap \emptyset = \emptyset
+$$
+
+The following sets are considered to be empty sets
+
+$$
+(a, a] \quad \text{or} \quad [b, b)
+$$
+
+---
+
+Countable additivity implies the finite additivity as follows
+
+(*Addition Rule*) If events $A$ and $B$ are mutually exclusive, then 
+$$
+P(A \text{ or } B) = P(A) + P(B)
+$$
+
+**Note** Two events/outcomes are called **mutually exclusive** or **disjoint** if they cannot both happen.
+
+
+
+## Several Implications from the Axioms
+
+$$
+\Pr[A^c] = 1-\Pr[A]
+$$
+
+$$
+\Pr[A \text{ or } B] =  \Pr[A] + \Pr[B] - \Pr[\{A \text{ and } B\}]
+$$
+---
+
+**Law of Total Probability**
+
+$$
+\begin{aligned}
+\Pr[A] & = & \Pr[\{A \text{ and } B\} \text{ or } \{A \text{ and } B^c\}] \\
+       & = & \Pr[\{A \text{ and } B\}] + \Pr[\{A \text{ and } B^c\}]
+\end{aligned}
+$$
+
+
+
+$$
+\Pr[A] = \sum^{N}_{i=1} \Pr[A \text{ and }B_i]
+$$
+
+## Outcome of Interest: Random Variables
+
+
+We immediately realize that a sample space $\Omega$ may be tedious to describe if the elements of $\Omega$ are not numbers. 
+
+$\implies$
+
+We may want to formulate a rule, or a set of rules, by which the elements $w$ of $\Omega$ may be represented by numbers
+
+## Outcome of Interest: Random Variables
+
+**Random Variables** are variables that are not perfectly preditable but whose repeated realizations are described by a *probabilitiy distribution function*. A random variable assigns a number to each event of the experiment. 
+
+\bigskip
+
+1. The values of random variables must represent *mutually exclusive* and *exhaustive* events. 
+2. All these values together form the entire sample space.
+
+That is, different values *cannot* represent the same event, and all events should be represented by some values.
+
+## Examples
+
+1. Two outcomes of a coin flip can be represented by a binary random variable where $1$ indicates landing on heads and $0$ landing on tails. 
+2. Gender: male denoted by $0$ and female $1$.
+3. etc.
+
+## Outcome of Interest: Random Variables
+
+More formally: consider a random experiment with a sample space $\Omega$. A function $X$, which assigns to each element $w\in \Omega$ one and only one number $X(w)=x$, is called **random variable**. The **space** or **range** of $X$ is the set of real numbers $\mathcal{D}=\{x:x=X(w), w\in \Omega\}$. 
+
+This actually induces a new sample space (the real line), as well as a new probability function on the real line.
+
+## Outcome of Interest: Random Variables
+
+Loosely speaking: Two types of random variables
+
+- **Discrete R.V.**: $\mathcal{D}$ is a countable set (finite or infinitely countable)
+- **Continuous R.V.**: $\mathcal{D}$ an interval of real numbers
+
+
+## Cumulative Distribution Function (CDF)
+
+To characterize a random variable, we will use CDF
+
+$$
+F(x) = \Pr[X \leq x] \quad \text{or} \quad F_X(x)
+$$
+
+It satisfies the following properties
+
+1. $\underset{x\rightarrow - \infty}{\lim}F(x)=0$ and $\underset{x \rightarrow \infty}{\lim} F(x)=1$. 
+2. $F(x)$ is nondecreasing in $x$
+3. $F(x)$ is right-continuous: $\underset{x\rightarrow x^+_0}{\lim}F(x)=F(x_0)$.
+4. $F(x)$ has a limit from the left:  $\underset{x\rightarrow x^-_0}{\lim}F(x)$ exists.
+
+## Which of the following is not a CDF?
+
+
+  ![graph](figures/dist_quiz.jpg)
+
+
+## CDF: Discrete Variable
+
+$F(x) = \Pr[X\leq x]$ is a step function for a discrete variable. 
+
+\bigskip
+
+The corresponding **probability mass function** (PMF) $\Pr[X=x_i]=p_i$ which again satisfies 
+
+1. $0 \le p_i \le 1$.
+2. $\sum p_i = 1$
+
+## CDF: Continuous Variable
+
+We know that $p_i = 0$ for any continuous variable, and therefore we cannot formally define the p.m.f. for a continuous case. Instead, we have to resort to a concept that defines **relative probability**: **probability density function** (PDF)
+
+$$
+f(x) = \frac{d}{dx} F(x) \quad \text{where the derivative exists}
+$$
+
+According to the **Fundamental Theorem of Calculus**, we know that the CDF $F(x)$ of a continuous random variable $X$ may be expressed in terms of its PDF:
+
+$$
+F(x)=\int^x_{-\infty} f(t)dt
+$$
+
+## Properties of PDF
+
+1. $F(x)=\int^x_{-\infty} f(t)dt$
+2. $f(x)\geq 0 \quad \forall x$. Note that it can be greater than $1$!
+3. $\int^\infty_{-\infty} f(t)dt = 1$
+
+## Properties of PDF (Explained)
+
+1. $F(x)=\int^x_{-\infty} f(t)dt$ (an application of the Fundamental Theorem of Calculus)
+2. $f(x)\geq 0 \quad \forall x$. (a result that follows from that $F(x)$ is a **nondecreasing function** of $x$)
+3. $\int^\infty_{-\infty} f(t)dt = 1$ (the area between the function and the $x$-axis must be $1$. This must be true since $F(x)=\int^x_{-\infty} f(t)dt$ and $\underset{x \rightarrow \infty}{\lim} F(x)=1$)
+
+
+## Nice Geometrical Interpretation of the probability of an event
+
+$\Pr[X \le x_0]$ is equal to the area under the PDF on the interval $(-\infty, x_0)$
+
+```{r echo = FALSE, message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'}
+
+curve(dnorm(x),xlim=c(-4,4),main='Area Under Density')
+xvec1 <- seq(4,4,length=101)
+xvec2 <- seq(-4,0,length=101)
+
+xvec <- c(xvec1, xvec2)
+pvec <- dnorm(xvec)
+polygon(c(xvec,rev(xvec)),c(pvec,rep(0,length(pvec))),
+        col=adjustcolor("black",alpha=0.3))
+
+```
+
+
+
+## Further Discussions regarding PDF: (relative vs absolute)
+
+What is $\Pr[X=x]$? For a continuous variable, we always have $\Pr[X=x]=0$! Since the area (or the integral) under a single point of a curve is always zero! This is an important difference between continuous and discrete variables. 
+
+Again, it is relative probability, as opposed to 
+
+$$
+\Pr[a\le X \le b] = \int^b_a f(t)dt
+$$
+
+## Further Discussions regarding PDF: An Important Subtlety
+
+Note that the PDF of a continuous variable $X$ can only be defined when the distribution function of $X$ is **differentiable**. In some cases, this would create some problems. 
+
+
+## Further Discussions regarding PDF: An Important Subtlety
+
+**Example**: Uniform Distribution
+
+\bigskip
+
+Consider the experiment of randomly choosing a real number from the interval [$0,1$]. If we denote this random variable by $X$, then we see that $X$ is a continuous uniform random variable on [$0,1$]. Since the likelihood of picking any number is uniform across the interval, we see that the CDF $F(x)$ is given by
+
+$$
+\Pr[X\le x] = F(x) = \begin{cases}
+0 & \text{if } x<0 \\
+x & \text{if } 0 \le x \le 1 \\
+1 & \text{if } x>1
+\end{cases}
+$$
+
+## Further Discussions regarding PDF: An Important Subtlety
+
+Issues with Uniform Distribution
+
+$$
+\Pr[X\le x] = F(x) = \begin{cases}
+0 & \text{if } x<0 \\
+x & \text{if } 0 \le x \le 1 \\
+1 & \text{if } x>1
+\end{cases}
+$$
+
+This function is differentiable everywhere *except* at the end points $x=0$ and $x=1$. So the PDF of $X$ is defined at all points expcet for these two (**weird**!!)
+
+$$
+\frac{dF(x)}{dx}  = \begin{cases}
+0 & \text{if } x<0 \text{ or } x>1 \\
+1 & \text{if } 0 < x < 1 \\
+\text{undefined} & \text{if } x=1 \text{ or } x = 0 
+\end{cases}
+$$
+
+
+## Further Discussions regarding PDF: An Important Subtlety
+
+What should we do?! It would still make sense to define the PDF at these points of where the CDF is not differentiable. 
+
+\bigskip
+
+Why? We know that the integral over a single point is always zero, so we can always change the value of PDF at any particular point without changing the probabilities of events associated with our random variable. 
+
+$$
+\frac{dF(x)}{dx}  = \begin{cases}
+1 & \text{if } 0 \le x \le 1 \\
+0 & \text{otherwise } \\
+\end{cases}
+$$
+
+or, 
+
+$$
+\frac{dF(x)}{dx}  = \begin{cases}
+1 & \text{if } 0 < x < 1 \\
+0 & \text{otherwise } \\
+\end{cases}
+$$
+
+
+## Further Discussions regarding PDF: NOT always defined
+
+**Lesson** Not all continuous random variables have PDFs. 
+
+\bigskip
+
+**Example**: *Cantor Function* (Google it!)
+
+\bigskip
+
+In this class, we usually do not work with such variables. 
+
+## Specific Parametric Distributions
+
+Appendix B.4. in Greene 
+
+**Continuous Variables**
+
+1. Normal Distribution
+2. Chi-squared, t-, and F-distributions
+3. Lognormal Distribution
+4. Beta Distribution
+
+**Discrete Variables**
+
+5. Bernoulli Distribution
+6. Binomial Distribution
+7. Poisson Distribution
+
+
+## Estimation of Theoretical Concepts
+
+To uncover the distribution function (or the pattern), we will examine our data. It is important to distinguish between two concepts
+
+\begin{center}
+\textbf{Population} vs. \textbf{Sample}
+\end{center}
+
+## Estimation of Theoretical Concepts
+
+**Population: **  The entire set of individuals or objects of interest with the true distribution attached. 
+
+\bigskip
+
+**Sample (data, dataset): ** A portion, or part, of the population of interest. Or, a set of **repeated measurements** on a set of variables.
+
+**Observations**: the distinct repeated measurements on the variables. An individual observation often corresponds to a specific economic unit, such as a person, household, corporation, firm, organization, country, state, city or other geographical region. 
+
+## Estimation of Theoretical Concepts
+
+The $i^{ith}$ **observation** is the set ($x_i$) (the reason that this is a set is that later we will extend it to the multivariate case with more than one value). 
+
+\bigskip
+
+The **Sample** is the set $\{(x_i): i=1,\dots, N\}$
+
+## Estimation of Theoretical Concepts
+
+
+\bigskip
+
+![](figures/example_population-sample.png)
+
+## Estimation of Theoretical Concepts
+
+**Random Sample** or $i.i.d.$ **Sample**: Independent and Identically Distributed. 
+
+\bigskip
+
+Each observation in the sample can be considered as a draw from the same probability distribution (or population) [**identically distrubted**], and mutually **independent**. 
+
+
+## Estimation of Theoretical Concepts
+
+The *assumption* of random sampling provides the mathematical foundation for treating economic statistics with the tools of mathematical statistics.
+
+\bigskip
+
+The random sampling framework was a major intellectual breakthrough of the late 19th century, allowing the application of mathematical statistics to the social sciences. Before this conceptual development, methods from mathematical statistics had not been applied to economic data as the latter was viewed as non-random.
+
+\bigskip
+
+The random sampling framework enabled economic samples to be treated as random, a necessary precondition for the application of statistical methods.
+
+
+## Estimation of Theoretical Concepts
+
+**Population vs Sample**
+
+Note that: population does not change but sample may
+
+- The size of a sample may vary
+- The draws of the sample may vary
+
+
+\bigskip
+
+Since all we can know about the population depends on the sample available to us, every time when we have a different sample, we have a different answer. What to do??!!
+
+
+## Estimation of Theoretical Concepts
+
+**Population vs Sample**
+
+\bigskip
+
+**Problem:** Sampling Errors (we will discuss these more later) 
+
+\bigskip
+
+In our previous example: we have more than 3 red cars, but in the sample, there is only one. The percentage is certainly NOT the true value. 
+
+
+## Estimation of CDF
+
+Using data, how do we obtain such theoretical concepts? **Empirical CDF**
+
+$$
+\widehat{F}(x) = \frac{1}{N}\sum^N_{i=1} \mathbb{I}[X_i \le x]
+$$
+where $X_i$ is the $i^{th}$ observation in your sample; $N$ is the number of observations; $\mathbb{I}[\cdot]$ is the indicator function taking on value of one if the argument is met and zero otherwise. 
+
+\bigskip
+
+**Example** 
+
+
+## Theoretical Rationale behind Estimation of CDF (Optional)
+
+Why would this work? 
+
+\bigskip
+
+Even if $F(x)$ is completely unknown (regardless of continuous or discrete variables), because $N\widehat{F}(x)$ is binomially distributed with mean $NF(x)$, this estimator is **unbiased**. 
+
+\bigskip
+
+By the law of large numbers it is also **consistent**:
+
+$$
+\widehat{F}(x) \overset{a.s.}{\implies} F(x) \quad \forall x. 
+$$
+
+## Theoretical Rationale behind Estimation of CDF (Optional)
+
+**Glivenko-Cantelli Theorem** extends the law of large numbers and gives **uniform convergence**
+
+\bigskip
+
+Lets define **uniform distance** 
+$$
+||\widehat{F}(x)-F(x)||_{\infty} = \underset{x}{\sup}|\widehat{F}(x)-F(x)|
+$$
+
+Let $X_1, X_2, \dots$ are i.i.d. random variables with distribution function $F$, then 
+$$
+||\widehat{F}(x)-F(x)||_{\infty} \overset{a.s.}{\implies} 0
+$$
+
+## Theoretical Rationale behind Estimation of CDF (Optional)
+
+**Glivenko-Cantelli Theorem** provides also an important theoretical basis for analysis of pattern recognition problem in the machine learning literature (practically including many things such as classification and regressions). 
+
+The pattern recognition problem also belongs to the general statistical problem of function estimation from empirial data, but in this problem, one has to estimate a function belonging to a simple sets of functions -- sets of **indicator functions**. 
+
+Analysis of these simple sets was crucial for discovery of the concepts that determine the generalization ability, the so-called **capacity** concepts of a set of functions. 
+
+## Theoretical Rationale behind Estimation of CDF (Optional)
+
+In the 1980s, when the theory of this capacity approach had been essentially developed, it was note that a generalized version of the problems at the cornerstone of statistics (the Glivenko-Cantelli problem) leads to the same analysis that was developed for the theory of learning and generalization in pattern recognition. 
+
+In the mid-1980s, these results were rewritten in traditional statistical terms. 
+
+## Estimation of PMF
+
+Using data, how do we obtain such theoretical concepts? **Empirical PMF**
+
+$$
+\widehat{\Pr}(x) = \frac{1}{N}\sum^N_{i=1} \mathbb{I}[X_i = x]
+$$
+
+## Estimation of PDF
+
+This becomes a lot more challenging. Nonparametric density estimation continues to be a difficult topic, and many ways have been proposed. But many estimators can be considered as refined versions of historgram. 
+
+## Alternative Approaches to Characterize a Distribution
+
+Appendix B. in Greene:
+
+> The probability density function is a natural and familiar way to formulate the distribution of a random variable. But, there are many other functions that are used to identify or characterize a random variable, depending on the setting. 
+
+1. Moment Approach
+2. Moment Generating Functions
+3. Characteristic Function
+4. Entropy Function
+
+Many of such functions involve **Expectation** of a random variable, which we now define. 
+
