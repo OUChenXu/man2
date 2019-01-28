@@ -1,4 +1,4 @@
-# Introduction to Multivariate Analysis
+# A First Step to Modelling the Relationship
 
 ## Detailed Topics to be Covered
 
@@ -8,14 +8,23 @@
     2. Direction: Covariance and Its Estimation
     3. Direction and Magnitude: Correlation and Its Estimation
     4. Properties of Covariance and Correlation
-    5. 
+    5. Implementation in R
+    
+2. Applications of Covariance and Correlation
+
+    1. Portfolio Diversification
+    2. Optimal Forecast Combination
+
+3. Distribution of Correlation and Tests of Zero Correation
+
+    1. Distribution of Correlation
+    2. Test statistic
+    3. Correlation and Independence
     
     
 ## Reading and Useful Resources
 
 ### Required Readings
 
-1. Slides: [here](../lecture/mv01_joint_dist.pdf)
-2. Download R Examples for Basic Concepts of Joint and Marginal Distributions: [here](../lecture/example/mv01_joint_dist_example01.R)
-2. Download R Examples for Tests of Independence: [here](../lecture/example/mv01_joint_dist_example02.R)
-    
+1. Slides: [here](../lecture/mv02_association.pdf)
+2. Download R Examples: [here](../lecture/example/mv02_association_example01.R)
