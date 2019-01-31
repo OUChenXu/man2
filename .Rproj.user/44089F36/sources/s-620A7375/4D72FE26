@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548879978555.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4D72FE26",
+    "lastKnownWriteTime" : 1548703572,
+    "last_content_update" : 1548703572,
+    "path" : "~/Dropbox/02 teaching/econ5043/08github/lecture/example/mv02_association_example01.R",
+    "project_path" : "lecture/example/mv02_association_example01.R",
+    "properties" : {
+        "cursorPosition" : "7,35",
+        "scrollLine" : "1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

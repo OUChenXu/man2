@@ -1,0 +1,18 @@
+
+
+CLFD
+AAPL
+
+library(quantmod)
+getSymbols(c("MFL", "AAPL"), from="2018-01-01")
+
+
+  apple<-AAPL$AAPL.Adjusted 
+  apple_returns<- na.omit(diff(log(apple)))
+  
+  clearfield<-MFL$MFL.Adjusted 
+  clearfield_returns<- na.omit(diff(log(clearfield)))
+  
+  # Correlation 
+  
+  cor(apple_returns, clearfield_returns)

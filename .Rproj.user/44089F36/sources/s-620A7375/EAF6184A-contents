@@ -1,0 +1,531 @@
+---
+title: "Mathematical Expectation (III): Alternative Approaches to Characterize a Distribution"
+author: "Le Wang"
+header-includes:
+  - \usepackage{tikz}
+date: "`r Sys.Date()`"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Alternative Approaches to Characterize a Distribution
+
+Appendix B. in Greene:
+
+> The probability density function is a natural and familiar way to formulate the distribution of a random variable. But, there are many other functions that are used to identify or characterize a random variable, depending on the setting. 
+
+1. Moment Approach
+2. Moment Generating Functions
+3. Characteristic Function
+4. Entropy Function
+
+
+## Summary 
+
+1. **$n^{th}$ Order (Central) Moment**: 
+$$
+\mathbb{E}[(X-\mu_X)^r] \quad \text{ for } r\geq 2
+$$
+
+2. **Moment Generating Function**
+$$
+M_X(t)  = \mathbb{E}[e^{tX}]
+$$
+
+3. **Characteristics Function**
+
+$$
+C(t)=\mathbb{E}[\exp(i\cdot t \cdot x)]
+$$
+
+
+4. **Entropy Function**
+$$
+\mathbb{H}(X) = - \sum p_X(x_k) \ln(p_X(x_k)) =\mathbb{E}[-\ln(p(X))]
+$$
+
+## Moment Approach: Motivation
+
+Consider the following two distributions:
+
+$$
+\begin{aligned}
+S_X = \{-1, 1\}, &  \quad p_X(-1) =p_X(1) = 1/2 \\
+S_Y = \{-2, 2\}, &  \quad p_X(-2) =p_X(2) = 1/2 
+\end{aligned}
+$$
+
+Are they the same? If not, how are they different?
+
+
+## Moment Approach: Motivation
+
+These two distributions are obviously different. But there is only one difference: the distribution of $Y$ is more spread out than the distribution of $X$. 
+
+\bigskip
+
+They have the same center. 
+$$
+\mathbb{E}[X] = \mathbb{E}[Y] = 0
+$$
+
+## Moment Approach: Motivation
+
+Then, how do we characterize the difference in terms of spread?
+
+\bigskip
+
+On average, how far the values are from the center or the expectation?
+
+\bigskip
+
+In this case, the direction of the deviation does not really matter. 
+\bigskip
+$$
+\mathbb{E}[(X-\mu_X)^2]
+$$
+
+## Moment Approach: Motivation
+
+It is a function of a random variable:
+
+$$
+\begin{aligned}
+\mathbb{E}[(X-\mu_X)^2]  & = \sum (x_i - \mu_x)^2 p(x_i) \\
+                         & = (-1-0)^2\cdot \frac{1}{2} + (1-0)^2\cdot \frac{1}{2} \\
+                         & = 1 \\
+                         & \\
+\mathbb{E}[(Y-\mu_X)^2]  & = \sum (y_i - \mu_y)^2 p(y_i) \\
+                         & = (-2-0)^2\cdot \frac{1}{2} + (2-0)^2\cdot \frac{1}{2} \\  
+                         & = 4
+\end{aligned}
+$$
+
+This formula indeed characterize the primary difference between two distributions. 
+
+## Moment Approach: Motivation
+
+This formula, however, is defined in terms of squared distances, the variance is not measured in the same units as $X$. 
+
+\bigskip
+
+For example, if $X$ is measured in **dollars**, then the variance is measured in **squared dollars**. If you double $X$, the variance will increase by 4 times. 
+
+\bigskip
+
+Same-unit measure of spread: 
+
+$$
+\sqrt{\mathbb{E}[(X-\mu_X)^2]}
+$$
+
+
+## Moment Approach: Motivation
+
+You can further produce a unit-free measure of the spread of a distribution
+
+$$
+\sqrt{\mathbb{E}[(X-\mu_X)^2]}/\mu_X
+$$
+
+## Moment Approach: Motivation
+
+We have three equivalent expressions of the spread
+
+1. **Variance**:  $\sigma_X^2=\mathbb{E}[(X-\mu_X)^2]$
+2. **Standard Deviation:** $\sigma=\sqrt{\mathbb{E}[(X-\mu_X)^2]}$
+3. **Coefficient of Variation**: $\sigma_X/\mu_X$. 
+
+\bigskip
+
+**Note**  Variance, again, should be considered as a feature of the distribution, not a function of a random variable. $X-\mu^2$ is a function of a random variable.  
+
+
+## Moment Approach: Motivation
+
+Variance satisfies the following properties:
+
+\bigskip
+
+1. $Var(c)=0$, where $c$ is a constant.
+2. $Var(c+X)=Var(X)$.
+3. $Var(cX)=c^2Var(X)$
+4. $Var(X)=\mathbb{E}[X^2]-(\mathbb{E}[X])^2$.
+
+**This is left as a homework assignment**
+
+## Moment Approach: Definition
+
+We can actually generalize this approach to capture many additional characteristics of a distribution by considering other expressions of the form $\mathbb{E}[X^r]$. 
+
+\bigskip
+
+**Theorem** For a *bounded* distribution of mass or probability, the collection of all the **moments** (of all oders, from $1$ to $\infty$) uniquely determines the distribution.
+
+1. **First Moment**: $\mathbb{E}[X]$
+2. **$n^{th}$ Order Moment**: $\mathbb{E}[X^r]$ for $r\geq 2$
+3. **$n^{th}$ Order (Central) Moment**: $\mathbb{E}[(X-\mu_X)^r]$ for $r\geq 2$
+
+
+## Moment Approach: Examples
+
+**Third Moment**
+
+$$
+\mathbb{E}[X-\mu_X]^3
+$$
+
+**Skewness**
+
+$$
+\mathbb{E}[X-\mu_X]^3/\sigma_X^3
+$$
+
+Where are extreme values concentrated, on average?
+
+## Moment Approach: Examples
+
+
+```{r echo=FALSE,message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'}
+      N<-3
+          x<-seq(0,20,by=.1)
+          par(mfrow = c(1, 2))
+          # one degree of freedom
+          plot(x,dchisq(x,N),type="l",lwd=2,col="blue",main="Positive Sknewness",ylab="",xlab="")
+          plot(-x,dchisq(x,N),type="l",lwd=2,col="blue",main="Negative Sknewness",ylab="",xlab="")
+```
+
+
+## Moment Approach: Examples
+
+**Fourth Moment**
+
+$$
+\mathbb{E}[X-\mu_X]^4
+$$
+
+**Kurtosis**
+
+$$
+\mathbb{E}[X-\mu_X]^4/\sigma_X^4
+$$
+
+## Economic Theories and Higher Order Moments
+
+
+%\url{http://hschlesinger.people.ua.edu/uploads/2/6/8/4/26840405/prudence-temperance-res-final.pdf}
+
+A pure increase in **downside risk** does not change the mean nor the variance of a risky wealth prospect, but it does increase the **negative skewness**. More generally, 
+
+Economic theories predict: **Prudence** plays an important role in the tradeoff between risk and (negative) skewness for economic decisions made under uncertainty, as shown by Chiu (2005).
+
+\bigskip
+
+A lesser known trait affecting behavior towards risk is **temperance**, a term also coined by Kimball (1992) a temperate individual generally dislikes kurtosis.
+
+
+
+## Moment Generating Function
+
+It turns out that the information about all existing moments can be captured by a certain function
+
+**Moment Generating Function (MGF)** Let $X$ be a random variable with the support $S_X = \{x_1, x_2, \dots, \}$ and PMF, $p_X(x)$. Its MGF is defined as
+
+$$
+\begin{aligned}
+M_X(t) & = \mathbb{E}[e^{tX}] \\
+       & = \underset{x\in S_X}{\sum} e^{tx}p_X(x) 
+\end{aligned}
+$$
+
+
+## Moment Generating Function
+
+Consider the following two distributions:
+
+$$
+\begin{aligned}
+S_X = \{-1, 1\}, &  \quad p_X(-1) =p_X(1) = 1/2 \\
+S_Y = \{-2, 2\}, &  \quad p_X(-2) =p_X(2) = 1/2 
+\end{aligned}
+$$
+
+Are they the same? If not, how are they different?
+
+## Moment Generating Function
+
+Continuing with the previous example, 
+
+$$
+\begin{aligned}
+M_X(t) & = \mathbb{E}[e^{tX}] \\
+       & = \underset{x\in S_X}{\sum} e^{tx}p_X(x) \\
+       & = e^{t\times -1}p(-1) +e^{t\times 1}p(1) \\
+       & = (e^{-t}+e^t)/2
+\end{aligned}
+$$
+
+
+
+## MGF and Moments
+
+**Theorem** The $r$-th moment of $X$ (when exists) is equal ot the $r$-th derivative of the MGF of $X$ evaluated at zero:
+
+$$
+\frac{d^r M_X(t)}{d^r t}|_{t=0} = \mathbb{E}[X^r]
+$$
+
+## MGF and Moments
+
+Let me show you the first moment
+
+$$
+\begin{aligned}
+\frac{d M_X(t)}{d t} & = \frac{d}{d t}\left(\underset{x\in S_X}{\sum} e^{tx}p_X(x) \right)\\
+\pause & = \frac{d}{d t}\left(e^{tx_1}p_X(x_1) + e^{tx_2}p_X(x_2) + \dots \right) \\
+\pause & = x_1\cdot e^{tx_1}p_X(x_1)+ x_2\cdot e^{tx_2}p_X(x_2)+\dots \\
+\pause & = \mathbb{E}[Xe^{tX}]
+\end{aligned}
+$$
+
+
+## MGF and Moments
+
+
+Substituting $t=0$, we obtain
+
+$$
+\begin{aligned}
+\frac{d^r M_X(t)}{d^r t}|_{t-0} & = \mathbb{E}[Xe^{tX}]|_{t=0} \\
+                                & = \mathbb{E}[X]
+\end{aligned}
+$$
+
+## Moment Generating Function
+
+These results hold for the continuous variables as well, when the function exists. 
+
+$$
+\begin{aligned}
+M_X(t) & = \int \exp(tx)f_X(x)dx \\
+& \\
+\frac{d^r}{d^r t}M_X(t) & = \frac{d^r}{d^r t} \int \exp(tx)f_X(x)dx  = \mathbb{E}[x^r\exp(tx)]\\
+\end{aligned}
+$$
+
+## Moment Generating Function
+
+Continuing with the previous example, 
+
+$$
+\begin{aligned}
+M_X(t) & = \mathbb{E}[e^{tX}] \\
+       & = (e^{-t}+e^t)/2
+\end{aligned}
+$$
+\pause 
+
+$$
+\begin{aligned}
+\frac{d M_X(t)}{d t} & = \frac{d}{dt}\left((e^{-t}+e^t)/2\right) \\
+\pause                      & =  (-e^{-t}+e^t)/2 \\
+                     & \\
+\frac{d M_X(t)}{d t}|_{t=0}  & =  \pause (-e^{0}+e^0)/2 \\
+                     & = 0
+\end{aligned}
+$$
+
+## MGF and Distribution
+
+MGFs are not only useful for computing moments. As a matter of fact, the MGF provides a complete description of a distribution. In other words each distribution has a unique MGF.
+
+\bigskip
+
+Thus, instead of working the PMF, we can work with the MGF without losing any information about the distribution.
+
+## MGF and Distribution
+
+**Theorem** Let $X$ and $Y$ be two random variables, and suppose that the MGFs of $X$ and $Y$ exist and are equal for all $t\in R$ where the MGFs are finite,
+
+$$
+M_X(t) = M_Y(t)
+$$
+
+Then $X$ and $Y$ have the same distribution. In particular, their PMFs satisfy $p_X(u)=p_Y(u)$ for all $u$. 
+
+## MGF and Distribution
+
+**Intuition**. Let $\{u_1, u_2, \dots u_n\}$ be the support points. The MGFs will be as follows
+
+$$
+\begin{aligned}
+M_X(t) & = e^{tu_1}p_X(u_1)+ e^{tu_2}p_X(u_2) + \dots \\
+M_Y(t) & =  e^{tu_1}p_Y(u_1)+ e^{tu_2}p_Y(u_2) + \dots \\
+M_X(t)-M_Y(t) & = e^{tu_1}[p_X(u_1)-p_Y(u_1)] + e^{tu_2}[p_X(u_2)-p_Y(u_2)] + \dots
+\end{aligned}
+$$
+
+The only possibility that this equality holds is when $p_X(u)=p_Y(u)$ for all $u$. 
+
+
+## Characteristic Functions
+
+A major limitation with the MGF is that it does not exist for many random variables. Essentially, existence of the integral requires the tail of the density of $X$ to decline exponentially (otherwise the sum would be too large). This excludes thick-tailed distributions such as the Pareto. 
+
+
+## Characteristic Functions
+
+This limitation is removed if we consider the characteristic function (CF) of $X$, which is defined as 
+
+$$
+C(t)=\mathbb{E}[\exp(i\cdot t \cdot x)]
+$$
+
+where $i=\sqrt{-1}$.
+
+## Characteristic Functions
+
+**Properties**
+
+1. Like the MGF, the CF is a function of its argument $t$ and is a representation of the distribution. In fact, there is a **one-to-one correspondence** between **CDF** and **CF**. 
+2. The CF is also known as the Fourier transformation of the density of $X$ (if the PDF exists). 
+3. The CF always exists since $\exp(i\cdot t \cdot x)=\cos(t\cdot x)+i\cdot \sin(t\cdot x)$ is bounded. (see a sktech proof on the next slide)
+
+
+## Existence of Characteristic Function (Skip)
+
+To see why $C(t)$ exists for all real $t$, we note, in the continuous case, that its absolute value
+
+$$
+|C(t)| = |\int^\infty_{-\infty} e^{itx}f(x)dx| \leq \int^{\infty}_{-\infty} |e^{itx}f(x)|dx
+$$
+
+However, $|f(x)|=f(x)$ since $f(x)$ is a nonnegative  and $|e^{itx}|=|\cos(t\cdot x)+i\cdot \sin(t\cdot x)|=\sqrt{\cos^2(t\cdot x)+\cdot \sin^2(t\cdot x)} = 1$.
+
+\bigskip
+
+Thus,
+
+$$
+|C(t)|\leq \int^{\infty}_{-\infty} f(x)dx = 1
+$$
+
+Accordingly, the integral for $C(t)$ exists for all real values of $t$.
+
+
+## Characteristic Functions and Moments
+
+Similar to the MGF, the $r^{th}$ derivative of the CF evaluated at zero takes the simple form
+
+$$
+\frac{d^r C(t)}{d^r t}|_{t=0} = i^r \mathbb{E}[X^r]
+$$
+
+when such expectations exist. 
+
+\bigskip
+
+A further connection is that the $r$-th moment is finite if and only if $\frac{d^r C(t)}{d^r t}$ is continuous at zero.
+
+## Example
+
+**Numerical Example (CF for the Standard Uniform Distribution):** We can derive the characteristic function for a uniformly distributed variable. 
+
+$$
+C(t) = \mathbb{E}[\exp({itX})] = \left[\frac{e^{it}-1}{i \cdot t} \right]
+$$
+
+**Proof is skipped but provided on the next slide**: The key fact is that 
+
+$$
+e^{ix} = \cos(x) + i \sin(x)
+$$
+
+## Proof
+
+We can derive the characteristic function for a uniformly distributed variable. 
+\tiny
+$$
+\begin{aligned}
+C(t) = \mathbb{E}[\exp({itX})] & = \int^1_0 e^{itx} f(x) dx \\
+      & = \int^1_0 e^{itx} \cdot 1 dx \\
+      & = \int^1_0 \left[\cos(t\cdot x) + i \sin(t \cdot x) \right]dx \\
+      & = \left[ \frac{\sin(tx)}{t} - i \frac{\cos(tx)}{t}\right] |^1_0 \\ 
+      & = \left[\frac{\sin(t)}{t} - i \left(\frac{\cos(t)-1}{t}  \right) \right] \\
+      & = \left[\frac{i\cdot \sin(t)}{i\cdot t} - i\cdot i \left(\frac{\cos(t)-1}{i\cdot t}  \right) \right] \\
+      & = \left[\frac{i\cdot \sin(t)}{i \cdot t} + 1\cdot \left(\frac{\cos(t)-1}{i \cdot t}  \right) \right] \\
+      & = \left[\frac{i\cdot \sin(t) + \cos(t)-1}{i \cdot t} \right] \\   
+      & = \left[\frac{e^{it}-1}{i \cdot t} \right] \\   
+\end{aligned}
+$$
+
+
+## Characteristics and CDF
+
+Since there is a **one-to-one correspondence** between CDF and CF, it is always possible to find one of these functions if we know the other one. We have just seen how we can obtain a characteristic function from CDF (or density). 
+
+
+We present the following **inversion theorems** when $X$ is a scalar
+
+$$
+f_X(x) = \frac{1}{2\pi} \int e^{-i\cdot t \cdot x} C_X(t) dt
+$$
+
+
+## Characteristics and CDF
+
+
+**See my Intergenerational Mobility Paper**
+
+## Result
+
+**Theorem** [Need to double check]
+
+For any two random variables $X_1$ and $X_2$, they have the same probability distributions if and only if 
+$$
+C_{X_1}(t) = C_{X_2}(t)
+$$
+
+
+
+## Summary
+
+Both **moment generating function** and **characteristics function** can be used to infinite order moments with only one function! An incredible result. 
+
+## Entropy Function
+
+The **entropy** of a random variable $X$, with distribution $p_X(x)$, denoted by $\mathbb{H}(X)$, is a measure of its uncertainty. 
+
+$$
+\mathbb{H}(X) = - \sum p_X(x_k) \ln(p_X(x_k)) =\mathbb{E}[-\ln(p(X))]
+$$
+
+The larger $p(X)$ is, the less uncertainty is. Having this piece of information is not very informative. 
+
+
+## Summary 
+
+1. **$n^{th}$ Order (Central) Moment**: 
+$$
+\mathbb{E}[(X-\mu_X)^r] \quad \text{ for } r\geq 2
+$$
+
+2. **Moment Generating Function**
+$$
+M_X(t)  = \mathbb{E}[e^{tX}]
+$$
+
+3. **Characteristics Function**
+
+$$
+C(t)=\mathbb{E}[\exp(i\cdot t \cdot x)]
+$$
+
+
+4. **Entropy Function**
+$$
+\mathbb{H}(X) = - \sum p_X(x_k) \ln(p_X(x_k)) =\mathbb{E}[-\ln(p(X))]
+$$
