@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1549250521729.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2712444061",
+    "id" : "26F329FE",
+    "lastKnownWriteTime" : 1549250899,
+    "last_content_update" : 1549250899936,
+    "path" : "~/Dropbox/02 teaching/econ5043/08github/lecture/example/mv03_cond_dist_superbowl.R",
+    "project_path" : "lecture/example/mv03_cond_dist_superbowl.R",
+    "properties" : {
+        "cursorPosition" : "22,29",
+        "scrollLine" : "0",
+        "tempName" : "Untitled3"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

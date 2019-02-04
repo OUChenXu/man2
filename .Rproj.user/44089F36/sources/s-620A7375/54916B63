@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1549227978519.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "54916B63",
+    "lastKnownWriteTime" : 1549307855,
+    "last_content_update" : 1549307855112,
+    "path" : "~/Dropbox/02 teaching/econ5043/02lectures/lecture2/econ5043_lecture1_multivariate_statistics_basics_cond_dist01.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "227,88",
+        "scrollLine" : "212"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

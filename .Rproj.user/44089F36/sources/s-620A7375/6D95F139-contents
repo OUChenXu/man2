@@ -1,0 +1,21 @@
+table(where9am$daytype, where9am$location)
+
+appointment campus home office
+weekday           1     10   15     39
+weekend           0      0   26      0
+> table<-table(where9am$daytype, where9am$location)
+> prob.table(table)
+Error: could not find function "prob.table"
+> prop.table(table)
+
+appointment     campus       home     office
+weekday  0.01098901 0.10989011 0.16483516 0.42857143
+weekend  0.00000000 0.00000000 0.28571429 0.00000000
+> addmargins(prop.table(table))
+
+appointment     campus       home     office        Sum
+weekday  0.01098901 0.10989011 0.16483516 0.42857143 0.71428571
+weekend  0.00000000 0.00000000 0.28571429 0.00000000 0.28571429
+Sum      0.01098901 0.10989011 0.45054945 0.42857143 1.00000000
+> dist <- addmargins(prop.table(table))
+> dist[1,1:4]/dist[1,5]

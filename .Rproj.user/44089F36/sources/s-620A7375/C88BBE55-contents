@@ -1,0 +1,14 @@
+---
+title: "Machine Learning (I): Classification and Conditional Distribution"
+author: "Le Wang"
+header-includes:
+  - \usepackage{tikz}
+date: "`r Sys.Date()`"
+output: beamer_presentation
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Motivation
