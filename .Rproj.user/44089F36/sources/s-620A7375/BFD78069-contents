@@ -1,0 +1,14 @@
+---
+title: "Resources for Data Science/Big Data"
+output: radix::radix_article
+---
+
+
+
+## R and R studio
+
+I have been gradually migrating from `Stata` to `R` because there exist many useful packages that facilitate both teaching and (reproducible) research in an elegant way. For example, this website is created completely using `Radix`, an `R` package built by Yihui Xie and his coauthors. Recently, I have also started to use `bookdown` to organize and write notes and papers. 
+
+## Git and Github
+
+Git and Github provide an important way for version control. 

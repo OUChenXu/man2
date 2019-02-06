@@ -7,14 +7,26 @@ str(Default)
 
 attach(Default)
 
-# Manual Approach
+# Manual Approach (1)
 all.dist <- addmargins(prop.table(table(student,default)))
 all.dist
 
 # What is the conditional distribution given a customer is a student
 all.dist[1,1:2]/all.dist[1,3]
-
 all.dist[2,1:2]/all.dist[2,3]
+
+# Manual Approach (2)
+# Select the subset first
+default.student <- subset(Default, student=="Yes")
+prop.table(table(default.student$default))
+
+# Manual Approach (3)
+library(dplyr)
+Default %>%
+  filter(student == "Yes") %>%
+  count(default) %>%
+  mutate(feq = n/sum(n))
+
 
 # Classification
 # Neither a student nor a non-studdent is more likely default, and classify it as the No type
