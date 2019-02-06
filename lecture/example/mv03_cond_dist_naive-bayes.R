@@ -41,9 +41,11 @@ library(naivebayes)
 model <- naive_bayes(default ~ student, data = Default)
 model
 
-newdata <- data.frame(student = "No")
-newdata$student <- factor(newdata$student, levels = c("No", "Yes"))
+newdata <- data.frame(student = "Yes")
+predict(model, newdata = newdata)
 
+newdata$student <- factor(newdata$student, levels = c("No", "Yes"))
+str(newdata)
 # Predict Thursday's 9am location
 predict(model, newdata = newdata)
 

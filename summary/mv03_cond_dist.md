@@ -36,4 +36,4 @@
 1. Slides: [here](../lecture/mv03_cond_dist.pdf)
 2. Download R Examples: [here](../lecture/example/mv03_cond_dist_superbowl.R)
 3. Download R Examples: [here](../lecture/example/mv03_cond_dist_naive-bayes.R)
-3. Download R Notebook: [here](../lecture/example/mv03_cond_dist_multiplevars.R); [Data: cnames](../lecture/example/data/cnames.csv); [Data: FLVoters](../lecture/example/data/FLVoters.csv)  
+3. Download R Notebook: [here](../lecture/example/mv03_cond_dist_multiplevars.Rmd); [Data: cnames](../lecture/example/data/cnames.csv); [Data: FLVoters](../lecture/example/data/FLVoters.csv)  
